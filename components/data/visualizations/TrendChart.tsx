@@ -18,7 +18,7 @@ export function TrendChart({ title, description, data, timeframe }: TrendChartPr
   const maxValue = Math.max(...data.map((d) => d.value))
 
   return (
-    <Card className="shadow-card">
+    <Card className="shadow-md">
       <CardHeader>
         <div className="flex items-center justify-between">
           <div>
@@ -49,7 +49,11 @@ export function TrendChart({ title, description, data, timeframe }: TrendChartPr
                     <Text
                       size="sm"
                       className={
-                        item.change > 0 ? "text-emerald-600" : item.change < 0 ? "text-red-600" : "text-secondary"
+                        item.change > 0
+                          ? "text-[var(--color-functional-success)]"
+                          : item.change < 0
+                          ? "text-destructive"
+                          : "text-muted-foreground"
                       }
                     >
                       {item.change > 0 ? "+" : ""}

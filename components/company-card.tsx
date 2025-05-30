@@ -33,15 +33,15 @@ export function CompanyCard({ company, layout = "grid" }: CompanyCardProps) {
   const isListLayout = layout === "list"
 
   return (
-    <Card className={`hover:shadow-lg transition-all duration-200 ${isListLayout ? "flex" : ""}`}>
+    <Card className={`transition-all duration-200 ${isListLayout ? "flex" : ""}`}>
       <CardHeader className={`${isListLayout ? "flex-1" : ""}`}>
         <div className={`flex ${isListLayout ? "items-center gap-4" : "items-start justify-between"}`}>
           <div className={`flex items-center gap-3 ${isListLayout ? "flex-1" : ""}`}>
-            <div className="w-12 h-12 bg-gradient-to-br from-green-700 to-green-600 rounded-lg flex items-center justify-center">
+            <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
               {company.logo ? (
                 <img src={company.logo || "/placeholder.svg"} alt={company.name} className="w-8 h-8 rounded" />
               ) : (
-                <Building2 className="w-6 h-6 text-white" />
+                <Building2 className="w-6 h-6 text-primary-foreground" />
               )}
             </div>
             <div className={isListLayout ? "flex-1" : ""}>
