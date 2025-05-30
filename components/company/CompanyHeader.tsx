@@ -35,7 +35,7 @@ interface CompanyHeaderProps {
 
 export function CompanyHeader({ company }: CompanyHeaderProps) {
   return (
-    <Card className="shadow-card">
+    <Card className="shadow-md">
       <CardHeader>
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-4">
@@ -43,7 +43,7 @@ export function CompanyHeader({ company }: CompanyHeaderProps) {
               {company.logo ? (
                 <img src={company.logo || "/placeholder.svg"} alt={company.name} className="w-12 h-12 rounded-lg" />
               ) : (
-                <Building2 className="w-8 h-8 text-white" />
+                <Building2 className="w-8 h-8 text-primary-foreground" />
               )}
             </div>
             <div>

@@ -107,7 +107,7 @@ export function SmartSearchBar({
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyPress={handleKeyPress}
-          className="pl-12 pr-32 h-14 text-lg border-2 border-input focus:border-accent rounded-lg shadow-card"
+          className="pl-12 pr-32 h-14 text-lg border-2 border-input focus:border-accent rounded-lg shadow-md"
         />
         <div className="absolute right-2 top-1/2 transform -translate-y-1/2 flex items-center gap-2">
           <Button
@@ -119,7 +119,7 @@ export function SmartSearchBar({
           >
             <Mic className="w-4 h-4" />
           </Button>
-          <Button onClick={handleSearch} className="h-10 px-6 bg-accent hover:bg-accent/90">
+          <Button onClick={handleSearch} className="h-10 px-6 bg-accent text-accent-foreground hover:bg-accent/90">
             <Search className="w-4 h-4 mr-2" />
             Search
           </Button>
@@ -137,7 +137,7 @@ export function SmartSearchBar({
               key={source.id}
               variant={isSelected ? "default" : "outline"}
               className={`cursor-pointer transition-all ${
-                isSelected ? `${source.color} text-white hover:opacity-80` : "hover:bg-muted border-secondary/20"
+                isSelected ? "" : "hover:bg-muted border-border"
               }`}
               onClick={() => toggleSource(source.id)}
             >
@@ -150,7 +150,7 @@ export function SmartSearchBar({
 
       {/* Suggestions Dropdown */}
       {showSuggestionsList && suggestions.length > 0 && (
-        <div className="absolute top-full left-0 right-0 mt-2 bg-surface border border-input rounded-lg shadow-floating z-50">
+        <div className="absolute top-full left-0 right-0 mt-2 bg-popover border border-input rounded-lg shadow-floating z-50">
           {suggestions.map((suggestion, index) => (
             <div
               key={index}

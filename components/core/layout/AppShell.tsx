@@ -13,8 +13,10 @@ interface AppShellProps {
 export function AppShell({ children }: AppShellProps) {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false)
 
-  const sidebarWidth = isSidebarCollapsed ? "w-16" : "w-64"
-  const mainContentMargin = isSidebarCollapsed ? "ml-16" : "ml-64"
+  // SidebarNav actual widths are w-20 (5rem) and w-72 (18rem)
+  // The sidebarWidth variable here seems unused for SidebarNav's width,
+  // but mainContentMargin should match SidebarNav's actual widths.
+  const mainContentMargin = isSidebarCollapsed ? "ml-20" : "ml-72"
 
   return (
     <div className="min-h-screen bg-background flex">
