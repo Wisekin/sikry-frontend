@@ -53,67 +53,14 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // ServiceNow specific colors
-        "brand-primary": {
-          DEFAULT: "var(--color-brand-primary)",
-          foreground: "var(--color-brand-primary-foreground)",
-          hover: "var(--color-brand-primary-hover)",
-        },
-        "brand-secondary": {
-          DEFAULT: "var(--color-brand-secondary)",
-          foreground: "var(--color-brand-secondary-foreground)",
-        },
-        "brand-tertiary": {
-          DEFAULT: "var(--color-brand-tertiary)",
-          foreground: "var(--color-brand-tertiary-foreground)",
-        },
-        "brand-border": "var(--color-brand-border)",
-        "functional-success": {
-          DEFAULT: "var(--color-functional-success)",
-          foreground: "var(--color-functional-success-foreground)",
-        },
-        "functional-warning": {
-          DEFAULT: "var(--color-functional-warning)",
-          foreground: "var(--color-functional-warning-foreground)",
-        },
-        "functional-error": {
-          DEFAULT: "var(--color-functional-error)",
-          foreground: "var(--color-functional-error-foreground)",
-        },
-        "functional-info": {
-          DEFAULT: "var(--color-functional-info)",
-          foreground: "var(--color-functional-info-foreground)",
-        },
-        "functional-accent": {
-          DEFAULT: "var(--color-functional-accent)",
-          foreground: "var(--color-functional-accent-foreground)",
-        },
-        "semantic-critical": "var(--color-semantic-critical)",
-        "semantic-high": "var(--color-semantic-high)",
-        "semantic-medium": "var(--color-semantic-medium)",
-        "semantic-low": "var(--color-semantic-low)",
-        "semantic-info": "var(--color-semantic-info)",
-        "semantic-positive": "var(--color-semantic-positive)",
-        "semantic-negative": "var(--color-semantic-negative)",
-        "semantic-warning": "var(--color-semantic-warning)",
-        "semantic-error": {
-          DEFAULT: "var(--color-semantic-error)",
-          foreground: "var(--color-semantic-error-foreground)",
-        },
-        "dashboard-palette": {
-          "01": "var(--color-dashboard-palette-01)",
-          "02": "var(--color-dashboard-palette-02)",
-          "03": "var(--color-dashboard-palette-03)",
-          "04": "var(--color-dashboard-palette-04)",
-          "05": "var(--color-dashboard-palette-05)",
-          "06": "var(--color-dashboard-palette-06)",
-          "07": "var(--color-dashboard-palette-07)",
-          "08": "var(--color-dashboard-palette-08)",
-          "09": "var(--color-dashboard-palette-09)",
-          "10": "var(--color-dashboard-palette-10)",
-          "11": "var(--color-dashboard-palette-11)",
-          "12": "var(--color-dashboard-palette-12)",
-        },
+        // Functional colors are now directly part of the main palette (e.g., destructive)
+        // or can be added if more specific functional colors are needed
+        // For example, 'success' could be:
+        // success: {
+        //   DEFAULT: "hsl(var(--color-functional-success))",
+        //   foreground: "hsl(var(--color-functional-success-foreground))",
+        // },
+        // For now, relying on the core palette and 'destructive'.
       },
       fontFamily: {
         sans: ["var(--font-sans)", "sans-serif"],
