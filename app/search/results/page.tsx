@@ -143,7 +143,7 @@ function SearchResultsContent() {
       {/* Header */}
       <header className="bg-white dark:bg-slate-800 border-b">
         <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
             <Link href="/" className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-gradient-to-br from-green-700 to-green-600 rounded-lg flex items-center justify-center">
                 <MapPin className="w-4 h-4 text-white" />
@@ -152,7 +152,7 @@ function SearchResultsContent() {
                 S-I-K-R-Y
               </span>
             </Link>
-            <Button variant="outline" onClick={handleExport}>
+            <Button variant="outline" onClick={handleExport} className="w-full sm:w-auto">
               <Download className="w-4 h-4 mr-2" />
               Export Results
             </Button>
@@ -163,8 +163,8 @@ function SearchResultsContent() {
 
       <div className="container mx-auto px-4 py-6">
         <div className="flex flex-col lg:flex-row gap-6">
-          {/* Filters Sidebar - Fixed width issue */}
-          <div className="w-full lg:w-80 space-y-6">
+          {/* Filters Sidebar - Responsive fix */}
+          <div className="w-full lg:w-[300px] xl:w-[320px] space-y-6">
             <Card className="p-4 w-full">
               <h3 className="font-semibold mb-4 flex items-center gap-2">
                 <Filter className="w-4 h-4" />
@@ -180,7 +180,7 @@ function SearchResultsContent() {
                     <SelectTrigger className="w-full">
                       <SelectValue placeholder="All Industries" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="w-full">
                       <SelectItem value="All Industries">All Industries</SelectItem>
                       <SelectItem value="Software Development">Software Development</SelectItem>
                       <SelectItem value="Marketing & Advertising">Marketing & Advertising</SelectItem>
@@ -208,7 +208,7 @@ function SearchResultsContent() {
                     <SelectTrigger className="w-full">
                       <SelectValue placeholder="All Sizes" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="w-full">
                       <SelectItem value="All Sizes">All Sizes</SelectItem>
                       <SelectItem value="1-10">1-10 employees</SelectItem>
                       <SelectItem value="10-25">10-25 employees</SelectItem>
@@ -229,7 +229,7 @@ function SearchResultsContent() {
                     <SelectTrigger className="w-full">
                       <SelectValue placeholder="Any Score" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="w-full">
                       <SelectItem value="0">Any Score</SelectItem>
                       <SelectItem value="70">70%+</SelectItem>
                       <SelectItem value="80">80%+</SelectItem>
@@ -242,9 +242,9 @@ function SearchResultsContent() {
           </div>
 
           {/* Results */}
-          <div className="flex-1">
-            <div className="flex items-center justify-between mb-6">
-              <div>
+          <div className="flex-1 min-w-0"> {/* Added min-w-0 for proper flex behavior */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+              <div className="flex-1">
                 <h1 className="text-2xl font-bold">Search Results</h1>
                 <p className="text-muted-foreground">
                   {loading ? "Searching..." : `Found ${filteredCompanies.length} companies for "${query}"`}
@@ -252,7 +252,7 @@ function SearchResultsContent() {
               </div>
 
               <Tabs value={viewMode} onValueChange={(value) => setViewMode(value as "grid" | "list" | "map")}>
-                <TabsList>
+                <TabsList className="flex-shrink-0">
                   <TabsTrigger value="grid">
                     <Grid className="w-4 h-4" />
                   </TabsTrigger>
@@ -267,29 +267,29 @@ function SearchResultsContent() {
             </div>
 
             {loading ? (
-              <div className="flex items-center justify-center py-12">
+              <div className="flex flex-col items-center justify-center py-12 sm:flex-row gap-4">
                 <Loader2 className="w-8 h-8 animate-spin text-green-700" />
-                <span className="ml-2 text-lg">Searching across multiple sources...</span>
+                <span className="text-lg">Searching across multiple sources...</span>
               </div>
             ) : (
               <Tabs value={viewMode} className="w-full">
-                <TabsContent value="grid">
-                  <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+                <TabsContent value="grid" className="mt-0">
+                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
                     {filteredCompanies.map((company) => (
-                      <CompanyCard key={company.id} company={company} />
+                      <CompanyCard key={company.id} company={company} className="w-full" />
                     ))}
                   </div>
                 </TabsContent>
 
-                <TabsContent value="list">
+                <TabsContent value="list" className="mt-0">
                   <div className="space-y-4">
                     {filteredCompanies.map((company) => (
-                      <CompanyCard key={company.id} company={company} layout="list" />
+                      <CompanyCard key={company.id} company={company} layout="list" className="w-full" />
                     ))}
                   </div>
                 </TabsContent>
 
-                <TabsContent value="map">
+                <TabsContent value="map" className="mt-0">
                   <div className="bg-white dark:bg-slate-800 rounded-lg p-8 text-center">
                     <Map className="w-16 h-16 mx-auto text-muted-foreground mb-4" />
                     <h3 className="text-lg font-semibold mb-2">Map View Coming Soon</h3>

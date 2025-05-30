@@ -144,14 +144,14 @@ function SearchContent() {
     <AppShell>
       <div className="space-y-6">
         {/* Search Header */}
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <Heading level={1}>Company Search</Heading>
             <Text className="text-secondary">
               {loading ? "Searching..." : `Found ${filteredCompanies.length} companies for "${query}"`}
             </Text>
           </div>
-          <Button variant="outline" onClick={handleExport}>
+          <Button variant="outline" onClick={handleExport} className="w-full sm:w-auto">
             <Download className="w-4 h-4 mr-2" />
             Export Results
           </Button>
@@ -161,21 +161,21 @@ function SearchContent() {
         <SmartSearchBar placeholder="Refine your search..." showSuggestions={true} />
 
         <div className="flex flex-col lg:flex-row gap-6">
-          {/* Filters Sidebar */}
-          <div className="lg:w-64 space-y-6">
-            <Card className="p-4 shadow-card">
+          {/* Filters Sidebar - Fixed width */}
+          <div className="w-full lg:w-80 space-y-6">
+            <Card className="p-4 shadow-card filter-card">
               <Heading level={3} className="mb-4 flex items-center gap-2">
                 <Filter className="w-4 h-4" />
                 Filters
               </Heading>
               <div className="space-y-4">
-                <div>
+                <div className="w-full">
                   <label className="text-caption font-medium mb-2 block">Industry</label>
                   <Select
                     value={filters.industry}
                     onValueChange={(value) => setFilters((prev) => ({ ...prev, industry: value }))}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="w-full">
                       <SelectValue placeholder="All Industries" />
                     </SelectTrigger>
                     <SelectContent>
@@ -187,22 +187,23 @@ function SearchContent() {
                   </Select>
                 </div>
 
-                <div>
+                <div className="w-full">
                   <label className="text-caption font-medium mb-2 block">Location</label>
                   <Input
                     placeholder="Enter location..."
                     value={filters.location}
                     onChange={(e) => setFilters((prev) => ({ ...prev, location: e.target.value }))}
+                    className="w-full"
                   />
                 </div>
 
-                <div>
+                <div className="w-full">
                   <label className="text-caption font-medium mb-2 block">Company Size</label>
                   <Select
                     value={filters.employeeCount}
                     onValueChange={(value) => setFilters((prev) => ({ ...prev, employeeCount: value }))}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="w-full">
                       <SelectValue placeholder="All Sizes" />
                     </SelectTrigger>
                     <SelectContent>
@@ -215,7 +216,7 @@ function SearchContent() {
                   </Select>
                 </div>
 
-                <div>
+                <div className="w-full">
                   <label className="text-caption font-medium mb-2 block">Min. Confidence Score</label>
                   <Select
                     value={filters.confidenceScore.toString()}
@@ -223,7 +224,7 @@ function SearchContent() {
                       setFilters((prev) => ({ ...prev, confidenceScore: Number.parseInt(value) }))
                     }
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="w-full">
                       <SelectValue placeholder="Any Score" />
                     </SelectTrigger>
                     <SelectContent>
@@ -239,7 +240,7 @@ function SearchContent() {
           </div>
 
           {/* Results */}
-          <div className="flex-1">
+          <div className="flex-1 min-w-0">
             <div className="flex items-center justify-between mb-6">
               <Tabs value={viewMode} onValueChange={(value) => setViewMode(value as "grid" | "list" | "map")}>
                 <TabsList>
@@ -291,6 +292,7 @@ function SearchContent() {
       </div>
     </AppShell>
   )
+
 }
 
 export default function SearchPage() {
