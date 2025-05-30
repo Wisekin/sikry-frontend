@@ -1,6 +1,5 @@
 "use client"
 
-import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
@@ -16,15 +15,19 @@ const navigation = [
   { name: "Admin", href: "/admin", icon: Settings },
 ]
 
-export function SidebarNav() {
-  const [collapsed, setCollapsed] = useState(false)
+interface SidebarNavProps {
+  isCollapsed: boolean
+  setIsCollapsed: (collapsed: boolean) => void
+}
+
+export function SidebarNav({ isCollapsed, setIsCollapsed }: SidebarNavProps) {
   const pathname = usePathname()
 
   return (
-    <div className={cn("bg-surface border-r border-input transition-all duration-300", collapsed ? "w-16" : "w-64")}>
+    <div className={cn("bg-surface border-r border-input transition-all duration-300 overflow-x-hidden", isCollapsed ? "w-20 min-w-[5rem]" : "w-72 min-w-[18rem]")}>
       <div className="p-4">
         <div className="flex items-center justify-between mb-8">
-          {!collapsed && (
+          {!isCollapsed && (
             <div className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
                 <Search className="w-4 h-4 text-white" />
@@ -32,8 +35,8 @@ export function SidebarNav() {
               <span className="text-xl font-semibold text-primary">S-I-K-R-Y</span>
             </div>
           )}
-          <Button variant="ghost" size="sm" onClick={() => setCollapsed(!collapsed)} className="h-8 w-8 p-0">
-            {collapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
+          <Button variant="ghost" size="sm" onClick={() => setIsCollapsed(!isCollapsed)} className="h-8 w-8 p-0">
+            {isCollapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
           </Button>
         </div>
 
@@ -47,11 +50,11 @@ export function SidebarNav() {
                 className={cn(
                   "flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors",
                   isActive ? "bg-accent text-white" : "text-secondary hover:bg-muted hover:text-foreground",
-                  collapsed && "justify-center",
+                  isCollapsed && "justify-center",
                 )}
               >
-                <item.icon className={cn("w-5 h-5", !collapsed && "mr-3")} />
-                {!collapsed && item.name}
+                <item.icon className={cn("w-5 h-5", !isCollapsed && "mr-3")} />
+                {!isCollapsed && item.name}
               </Link>
             )
           })}

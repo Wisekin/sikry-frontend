@@ -163,21 +163,21 @@ function SearchResultsContent() {
 
       <div className="container mx-auto px-4 py-6">
         <div className="flex flex-col lg:flex-row gap-6">
-          {/* Filters Sidebar */}
-          <div className="lg:w-64 space-y-6">
-            <Card className="p-4">
+          {/* Filters Sidebar - Fixed width issue */}
+          <div className="w-full lg:w-80 space-y-6">
+            <Card className="p-4 w-full">
               <h3 className="font-semibold mb-4 flex items-center gap-2">
                 <Filter className="w-4 h-4" />
                 Filters
               </h3>
               <div className="space-y-4">
-                <div>
+                <div className="w-full">
                   <label className="text-sm font-medium mb-2 block">Industry</label>
                   <Select
                     value={filters.industry}
                     onValueChange={(value) => setFilters((prev) => ({ ...prev, industry: value }))}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="w-full">
                       <SelectValue placeholder="All Industries" />
                     </SelectTrigger>
                     <SelectContent>
@@ -189,22 +189,23 @@ function SearchResultsContent() {
                   </Select>
                 </div>
 
-                <div>
+                <div className="w-full">
                   <label className="text-sm font-medium mb-2 block">Location</label>
                   <Input
                     placeholder="Enter location..."
                     value={filters.location}
                     onChange={(e) => setFilters((prev) => ({ ...prev, location: e.target.value }))}
+                    className="w-full"
                   />
                 </div>
 
-                <div>
+                <div className="w-full">
                   <label className="text-sm font-medium mb-2 block">Company Size</label>
                   <Select
                     value={filters.employeeCount}
                     onValueChange={(value) => setFilters((prev) => ({ ...prev, employeeCount: value }))}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="w-full">
                       <SelectValue placeholder="All Sizes" />
                     </SelectTrigger>
                     <SelectContent>
@@ -217,7 +218,7 @@ function SearchResultsContent() {
                   </Select>
                 </div>
 
-                <div>
+                <div className="w-full">
                   <label className="text-sm font-medium mb-2 block">Min. Confidence Score</label>
                   <Select
                     value={filters.confidenceScore.toString()}
@@ -225,7 +226,7 @@ function SearchResultsContent() {
                       setFilters((prev) => ({ ...prev, confidenceScore: Number.parseInt(value) }))
                     }
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="w-full">
                       <SelectValue placeholder="Any Score" />
                     </SelectTrigger>
                     <SelectContent>
