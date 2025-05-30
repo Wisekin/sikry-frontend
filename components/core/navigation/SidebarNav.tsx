@@ -24,7 +24,7 @@ export function SidebarNav({ isCollapsed, setIsCollapsed }: SidebarNavProps) {
   const pathname = usePathname()
 
   return (
-    <div className={cn("bg-surface border-r border-input transition-all duration-300 overflow-x-hidden", isCollapsed ? "w-20 min-w-[5rem]" : "w-72 min-w-[18rem]")}>
+    <div className={cn("bg-card border-r border-border transition-all duration-300 overflow-x-hidden", isCollapsed ? "w-20 min-w-[5rem]" : "w-72 min-w-[18rem]")}>
       <div className="p-4">
         <div className="flex items-center justify-between mb-8">
           {!isCollapsed && (
@@ -49,7 +49,9 @@ export function SidebarNav({ isCollapsed, setIsCollapsed }: SidebarNavProps) {
                 href={item.href}
                 className={cn(
                   "flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors",
-                  isActive ? "bg-accent text-white" : "text-secondary hover:bg-muted hover:text-foreground",
+                  isActive
+                    ? "bg-primary text-primary-foreground"
+                    : "text-neutral-700 dark:text-neutral-300 hover:bg-muted hover:text-primary",
                   isCollapsed && "justify-center",
                 )}
               >

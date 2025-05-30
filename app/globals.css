@@ -23,7 +23,7 @@
     --accent-saturation: 80%;
     --accent-lightness: 50%;
     --accent: hsl(var(--accent-hue), var(--accent-saturation), var(--accent-lightness));
-    --accent-foreground: hsl(var(--accent-hue), var(--accent-saturation), 95%); /* Light text on accent */
+    --accent-foreground: hsl(var(--accent-hue), var(--accent-saturation), 10%); /* Dark text on accent for better contrast */
 
     /* Existing Neutral Colors (keeping these for now) */
     --color-neutral-50: #F9FAFB;
