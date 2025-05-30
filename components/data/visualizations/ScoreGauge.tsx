@@ -20,20 +20,20 @@ export function ScoreGauge({ title, description, score, maxScore = 100, label, c
   const colorClasses = {
     primary: "stroke-primary",
     accent: "stroke-accent",
-    emerald: "stroke-emerald-600",
-    warning: "stroke-warning",
+    emerald: "stroke-[var(--color-functional-success)]",
+    warning: "stroke-[var(--color-functional-warning)]",
     destructive: "stroke-destructive",
   }
 
   const getScoreColor = (score: number) => {
-    if (score >= 90) return "text-emerald-600"
-    if (score >= 70) return "text-warning"
-    if (score >= 50) return "text-orange-600"
+    if (score >= 90) return "text-[var(--color-functional-success)]"
+    if (score >= 70) return "text-[var(--color-functional-warning)]"
+    if (score >= 50) return "text-accent"
     return "text-destructive"
   }
 
   return (
-    <Card className="shadow-card">
+    <Card className="shadow-md">
       <CardHeader className="text-center">
         <CardTitle className="flex items-center justify-center gap-2">
           <Target className="w-5 h-5" />
@@ -70,7 +70,7 @@ export function ScoreGauge({ title, description, score, maxScore = 100, label, c
           </svg>
           <div className="absolute inset-0 flex flex-col items-center justify-center">
             <span className={`text-2xl font-bold ${getScoreColor(score)}`}>{score}</span>
-            <span className="text-xs text-secondary">/ {maxScore}</span>
+            <span className="text-xs text-muted-foreground">/ {maxScore}</span>
           </div>
         </div>
 

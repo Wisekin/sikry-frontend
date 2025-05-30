@@ -30,31 +30,31 @@ export function IntelCard({ title, description, value, change, badge, action }: 
   const getTrendIcon = (type: string) => {
     switch (type) {
       case "increase":
-        return <TrendingUp className="w-4 h-4 text-emerald-600" />
+        return <TrendingUp className="w-4 h-4 text-[var(--color-functional-success)]" />
       case "decrease":
-        return <TrendingDown className="w-4 h-4 text-red-600" />
+        return <TrendingDown className="w-4 h-4 text-destructive" />
       default:
-        return <Minus className="w-4 h-4 text-secondary" />
+        return <Minus className="w-4 h-4 text-muted-foreground" />
     }
   }
 
   const getTrendColor = (type: string) => {
     switch (type) {
       case "increase":
-        return "text-emerald-600"
+        return "text-[var(--color-functional-success)]"
       case "decrease":
-        return "text-red-600"
+        return "text-destructive"
       default:
-        return "text-secondary"
+        return "text-muted-foreground"
     }
   }
 
   return (
-    <Card className="shadow-card hover:shadow-floating transition-shadow">
+    <Card>
       <CardHeader className="pb-2">
         <div className="flex items-start justify-between">
           <div>
-            <CardTitle className="text-caption text-secondary">{title}</CardTitle>
+            <CardTitle className="text-caption text-muted-foreground">{title}</CardTitle>
             {description && <CardDescription className="mt-1">{description}</CardDescription>}
           </div>
           {badge && (

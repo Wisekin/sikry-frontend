@@ -57,7 +57,7 @@ export default function CompaniesPage() {
       cell: ({ row }: any) => (
         <div>
           <div className="font-medium">{row.original.name}</div>
-          <div className="text-caption text-secondary">{row.original.domain}</div>
+          <div className="text-caption text-muted-foreground">{row.original.domain}</div>
         </div>
       ),
     },
@@ -81,9 +81,9 @@ export default function CompaniesPage() {
           variant="outline"
           className={
             row.original.confidence >= 90
-              ? "text-emerald-700 bg-emerald-50 border-emerald-200"
+              ? "text-[var(--color-functional-success)] bg-[var(--color-functional-success)]/10 border-[var(--color-functional-success)]/20"
               : row.original.confidence >= 70
-                ? "text-warning bg-warning/10 border-warning/20"
+                ? "text-[var(--color-functional-warning)] bg-[var(--color-functional-warning)]/10 border-[var(--color-functional-warning)]/20"
                 : "text-destructive bg-destructive/10 border-destructive/20"
           }
         >
@@ -127,42 +127,42 @@ export default function CompaniesPage() {
 
         {/* Stats Cards */}
         <div className="grid md:grid-cols-4 gap-4">
-          <Card className="shadow-card">
+          <Card className="shadow-md">
             <CardHeader className="pb-2">
-              <CardTitle className="text-caption text-secondary">Total Companies</CardTitle>
+              <CardTitle className="text-caption text-muted-foreground">Total Companies</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-h2 font-semibold">1,247</div>
-              <Text size="sm" className="text-emerald-600">
+              <Text size="sm" className="text-[var(--color-functional-success)]">
                 +12% this month
               </Text>
             </CardContent>
           </Card>
-          <Card className="shadow-card">
+          <Card className="shadow-md">
             <CardHeader className="pb-2">
-              <CardTitle className="text-caption text-secondary">High Confidence</CardTitle>
+              <CardTitle className="text-caption text-muted-foreground">High Confidence</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-h2 font-semibold">892</div>
-              <Text size="sm" className="text-emerald-600">
+              <Text size="sm" className="text-[var(--color-functional-success)]">
                 90%+ accuracy
               </Text>
             </CardContent>
           </Card>
-          <Card className="shadow-card">
+          <Card className="shadow-md">
             <CardHeader className="pb-2">
-              <CardTitle className="text-caption text-secondary">Recently Scraped</CardTitle>
+              <CardTitle className="text-caption text-muted-foreground">Recently Scraped</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-h2 font-semibold">156</div>
-              <Text size="sm" className="text-secondary">
+              <Text size="sm" className="text-muted-foreground">
                 Last 24 hours
               </Text>
             </CardContent>
           </Card>
-          <Card className="shadow-card">
+          <Card className="shadow-md">
             <CardHeader className="pb-2">
-              <CardTitle className="text-caption text-secondary">Contacted</CardTitle>
+              <CardTitle className="text-caption text-muted-foreground">Contacted</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="text-h2 font-semibold">423</div>
@@ -176,7 +176,7 @@ export default function CompaniesPage() {
         {/* Search and Filters */}
         <div className="flex items-center gap-4">
           <div className="relative flex-1 max-w-md">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-secondary" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
             <Input
               placeholder="Search companies..."
               value={searchQuery}
@@ -191,7 +191,7 @@ export default function CompaniesPage() {
         </div>
 
         {/* Data Table */}
-        <Card className="shadow-card">
+        <Card className="shadow-md">
           <DataTable data={companies} columns={columns} />
         </Card>
       </div>
