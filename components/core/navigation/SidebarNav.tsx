@@ -24,18 +24,19 @@ export function SidebarNav({ isCollapsed, setIsCollapsed }: SidebarNavProps) {
   const pathname = usePathname()
 
   return (
-    <div className={cn("bg-card border-r border-border transition-all duration-300 overflow-x-hidden", isCollapsed ? "w-20 min-w-[5rem]" : "w-72 min-w-[18rem]")}>
+    <div className={cn("bg-[var(--sidebar-custom-bg)] border-r border-[hsl(180,89%,25%)] transition-all duration-300 overflow-x-hidden", isCollapsed ? "w-20 min-w-[5rem]" : "w-72 min-w-[18rem]")}>
       <div className="p-4">
         <div className="flex items-center justify-between mb-8">
           {!isCollapsed && (
             <div className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
+                {/* Icon color might need adjustment if it clashes with the new gradient on dark sidebar */}
                 <Search className="w-4 h-4 text-white" />
               </div>
-              <span className="text-xl font-semibold text-primary">S-I-K-R-Y</span>
+              <span className="text-xl font-semibold text-[var(--sidebar-custom-fg)]">S-I-K-R-Y</span>
             </div>
           )}
-          <Button variant="ghost" size="sm" onClick={() => setIsCollapsed(!isCollapsed)} className="h-8 w-8 p-0">
+          <Button variant="ghost" size="sm" onClick={() => setIsCollapsed(!isCollapsed)} className="h-8 w-8 p-0 text-[var(--sidebar-custom-fg)]">
             {isCollapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
           </Button>
         </div>
@@ -50,8 +51,8 @@ export function SidebarNav({ isCollapsed, setIsCollapsed }: SidebarNavProps) {
                 className={cn(
                   "flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors",
                   isActive
-                    ? "bg-primary text-primary-foreground"
-                    : "text-neutral-700 dark:text-neutral-300 hover:bg-muted hover:text-primary",
+                    ? "bg-primary text-primary-foreground" // Active state remains prominent
+                    : "text-[var(--sidebar-custom-fg)]/80 hover:bg-[var(--sidebar-custom-fg)]/10 hover:text-[var(--sidebar-custom-fg)]",
                   isCollapsed && "justify-center",
                 )}
               >
