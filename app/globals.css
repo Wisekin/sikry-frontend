@@ -69,6 +69,10 @@
     --ring: var(--accent);             /* Accent color for focus rings */
     --radius: 8px;
 
+    /* Custom Sidebar Colors */
+    --sidebar-custom-bg: hsl(180, 89%, 19%);
+    --sidebar-custom-fg: hsl(0, 0%, 95%);
+
     /* New Spacing Variables */
     --space-unit: 4px;
     --space-xs: var(--space-unit);                     /* 4px */
